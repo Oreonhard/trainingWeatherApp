@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cxa-LZ-6qp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cxa-LZ-6qp">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,8 +16,8 @@
                     <view key="view" contentMode="scaleToFill" id="QxK-0W-jKM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="aRQ-zb-ojl"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="지역별 날씨" image="map" catalog="system" id="iqS-RQ-tZ3"/>
                 </viewController>
@@ -26,7 +28,7 @@
         <!--오늘의 날씨-->
         <scene sceneID="67x-ki-JI9">
             <objects>
-                <viewController id="kAH-Ci-kay" sceneMemberID="viewController">
+                <viewController id="kAH-Ci-kay" customClass="TodayWeather" customModule="trainingWeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z97-IN-xwe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -71,7 +73,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Iuc-n6-ujF"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="0Xi-pe-1Oi" firstAttribute="centerX" secondItem="z97-IN-xwe" secondAttribute="centerX" id="73Z-61-839"/>
                             <constraint firstItem="Uij-AK-J5o" firstAttribute="top" secondItem="0Xi-pe-1Oi" secondAttribute="bottom" constant="10" id="QWI-TE-ADq"/>
@@ -85,7 +88,6 @@
                             <constraint firstItem="pJL-rC-ZzJ" firstAttribute="centerX" secondItem="z97-IN-xwe" secondAttribute="centerX" id="tYN-1L-otS"/>
                             <constraint firstItem="pJL-rC-ZzJ" firstAttribute="top" secondItem="Uij-AK-J5o" secondAttribute="bottom" constant="30" id="yWb-Hy-32B"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Iuc-n6-ujF"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="오늘의 날씨" image="sun.min.fill" catalog="system" id="y7q-an-Ydy"/>
                 </viewController>
@@ -119,8 +121,8 @@
                     <view key="view" contentMode="scaleToFill" id="jYG-Vi-rjQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="h4s-30-mg2"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="설정" image="gear" catalog="system" id="oh0-z1-oIj"/>
                 </viewController>
@@ -131,7 +133,10 @@
     </scenes>
     <resources>
         <image name="gear" catalog="system" width="128" height="119"/>
-        <image name="map" catalog="system" width="128" height="113"/>
+        <image name="map" catalog="system" width="128" height="110"/>
         <image name="sun.min.fill" catalog="system" width="128" height="121"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
