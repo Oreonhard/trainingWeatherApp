@@ -95,15 +95,20 @@
             </objects>
             <point key="canvasLocation" x="1160.8695652173915" y="182.8125"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Weather Tab Bar-->
         <scene sceneID="oNA-jb-P2I">
             <objects>
-                <tabBarController id="cxa-LZ-6qp" sceneMemberID="viewController">
+                <tabBarController id="cxa-LZ-6qp" customClass="WeatherTabBar" customModule="trainingWeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hzM-8l-SU2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="defaultIndex">
+                            <integer key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="dF5-Ub-9NX" kind="relationship" relationship="viewControllers" id="SCM-ab-tZl"/>
                         <segue destination="kAH-Ci-kay" kind="relationship" relationship="viewControllers" id="6tB-eq-N7x"/>
