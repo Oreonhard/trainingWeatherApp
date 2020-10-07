@@ -7,11 +7,24 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
 
-class TodayWeather: UIViewController {
+class TodayWeather: UIViewController, CLLocationManagerDelegate {
 
+    let locationManager = CLLocationManager();
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.locationManager.requestAlwaysAuthorization()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locationValue : CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        print("Locatoin Coordinate : \(locationValue.longitude) \(locationValue.latitude)")
+    }
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
     }
 }
