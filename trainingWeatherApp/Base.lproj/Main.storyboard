@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cxa-LZ-6qp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cxa-LZ-6qp">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -72,13 +72,26 @@
                                 <rect key="frame" x="87" y="270" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="su8-2L-dQd">
+                                <rect key="frame" x="242" y="131" width="20" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="f8i-ba-T1M"/>
+                                    <constraint firstAttribute="height" constant="22" id="tJC-rk-ZJG"/>
+                                </constraints>
+                                <state key="normal" image="location.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="reloadLocation:" destination="kAH-Ci-kay" eventType="touchUpInside" id="Dig-QJ-BQY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Iuc-n6-ujF"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="0Xi-pe-1Oi" firstAttribute="centerX" secondItem="z97-IN-xwe" secondAttribute="centerX" id="73Z-61-839"/>
+                            <constraint firstItem="su8-2L-dQd" firstAttribute="centerY" secondItem="Uij-AK-J5o" secondAttribute="centerY" id="PlS-hP-vBn"/>
                             <constraint firstItem="Uij-AK-J5o" firstAttribute="top" secondItem="0Xi-pe-1Oi" secondAttribute="bottom" constant="10" id="QWI-TE-ADq"/>
                             <constraint firstItem="Jca-bT-wvi" firstAttribute="width" secondItem="Iuc-n6-ujF" secondAttribute="width" id="Srv-NI-UeI"/>
+                            <constraint firstItem="su8-2L-dQd" firstAttribute="leading" secondItem="Uij-AK-J5o" secondAttribute="trailing" constant="17.5" id="TOm-U0-FyE"/>
                             <constraint firstItem="Uij-AK-J5o" firstAttribute="centerX" secondItem="z97-IN-xwe" secondAttribute="centerX" id="bny-ne-5nM"/>
                             <constraint firstItem="Jca-bT-wvi" firstAttribute="leading" secondItem="Iuc-n6-ujF" secondAttribute="leading" id="cQ0-VT-Vks"/>
                             <constraint firstItem="Jca-bT-wvi" firstAttribute="height" secondItem="Iuc-n6-ujF" secondAttribute="height" multiplier="0.5" id="deL-vE-Aua"/>
@@ -90,6 +103,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="오늘의 날씨" image="sun.min.fill" catalog="system" id="y7q-an-Ydy"/>
+                    <connections>
+                        <outlet property="AreaName" destination="Uij-AK-J5o" id="ygo-dn-UH7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RzC-Mm-kHA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -138,6 +154,7 @@
     </scenes>
     <resources>
         <image name="gear" catalog="system" width="128" height="119"/>
+        <image name="location.fill" catalog="system" width="128" height="121"/>
         <image name="map" catalog="system" width="128" height="110"/>
         <image name="sun.min.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
