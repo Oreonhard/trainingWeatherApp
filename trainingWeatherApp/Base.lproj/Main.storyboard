@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cxa-LZ-6qp">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cxa-LZ-6qp">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,7 +14,7 @@
             <objects>
                 <viewController id="dF5-Ub-9NX" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QxK-0W-jKM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="aRQ-zb-ojl"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -30,32 +30,32 @@
             <objects>
                 <viewController id="kAH-Ci-kay" customClass="TodayWeather" customModule="trainingWeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z97-IN-xwe">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="매우 맑음" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Xi-pe-1Oi">
-                                <rect key="frame" x="151.5" y="84" width="111" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="매우 맑음" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Xi-pe-1Oi">
+                                <rect key="frame" x="132" y="84" width="111" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서울" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uij-AK-J5o">
-                                <rect key="frame" x="189.5" y="130" width="35" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="서울" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uij-AK-J5o">
+                                <rect key="frame" x="170" y="130" width="35" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="28도" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pJL-rC-ZzJ">
-                                <rect key="frame" x="156" y="184" width="102.5" height="60"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="28도" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pJL-rC-ZzJ">
+                                <rect key="frame" x="136" y="184" width="103" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jca-bT-wvi">
-                                <rect key="frame" x="0.0" y="428.5" width="414" height="384.5"/>
+                                <rect key="frame" x="0.0" y="386.66666666666674" width="375" height="342.33333333333326"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ICN-K8-8yU">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="384.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="342.33333333333331"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
@@ -68,12 +68,8 @@
                                     <constraint firstAttribute="trailing" secondItem="ICN-K8-8yU" secondAttribute="trailing" id="x8u-HB-XrB"/>
                                 </constraints>
                             </scrollView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rcz-JE-B2Z">
-                                <rect key="frame" x="87" y="270" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="su8-2L-dQd">
-                                <rect key="frame" x="242" y="131" width="20" height="22"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="su8-2L-dQd">
+                                <rect key="frame" x="222.66666666666666" y="131" width="20" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="f8i-ba-T1M"/>
                                     <constraint firstAttribute="height" constant="22" id="tJC-rk-ZJG"/>
@@ -83,11 +79,18 @@
                                     <action selector="reloadLocation:" destination="kAH-Ci-kay" eventType="touchUpInside" id="Dig-QJ-BQY"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="sun" translatesAutoresizingMaskIntoConstraints="NO" id="Rcz-JE-B2Z">
+                                <rect key="frame" x="59.666666666666657" y="253.66666666666663" width="255.99999999999997" height="125"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="125" id="g4P-3H-axw"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Iuc-n6-ujF"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="0Xi-pe-1Oi" firstAttribute="centerX" secondItem="z97-IN-xwe" secondAttribute="centerX" id="73Z-61-839"/>
+                            <constraint firstItem="Rcz-JE-B2Z" firstAttribute="centerX" secondItem="z97-IN-xwe" secondAttribute="centerX" id="LVh-MD-0dV"/>
                             <constraint firstItem="su8-2L-dQd" firstAttribute="centerY" secondItem="Uij-AK-J5o" secondAttribute="centerY" id="PlS-hP-vBn"/>
                             <constraint firstItem="Uij-AK-J5o" firstAttribute="top" secondItem="0Xi-pe-1Oi" secondAttribute="bottom" constant="10" id="QWI-TE-ADq"/>
                             <constraint firstItem="Jca-bT-wvi" firstAttribute="width" secondItem="Iuc-n6-ujF" secondAttribute="width" id="Srv-NI-UeI"/>
@@ -98,7 +101,9 @@
                             <constraint firstItem="Jca-bT-wvi" firstAttribute="bottom" secondItem="Iuc-n6-ujF" secondAttribute="bottom" id="gtf-dp-bNu"/>
                             <constraint firstItem="Jca-bT-wvi" firstAttribute="trailing" secondItem="Iuc-n6-ujF" secondAttribute="trailing" id="jNq-8Q-9U1"/>
                             <constraint firstItem="0Xi-pe-1Oi" firstAttribute="top" secondItem="Iuc-n6-ujF" secondAttribute="top" constant="40" id="kIg-Aw-vK4"/>
+                            <constraint firstItem="Jca-bT-wvi" firstAttribute="top" secondItem="Rcz-JE-B2Z" secondAttribute="bottom" constant="8" id="pGl-nt-uMj"/>
                             <constraint firstItem="pJL-rC-ZzJ" firstAttribute="centerX" secondItem="z97-IN-xwe" secondAttribute="centerX" id="tYN-1L-otS"/>
+                            <constraint firstItem="Rcz-JE-B2Z" firstAttribute="top" secondItem="pJL-rC-ZzJ" secondAttribute="bottom" constant="8" id="yC0-T3-O4s"/>
                             <constraint firstItem="pJL-rC-ZzJ" firstAttribute="top" secondItem="Uij-AK-J5o" secondAttribute="bottom" constant="30" id="yWb-Hy-32B"/>
                         </constraints>
                     </view>
@@ -109,7 +114,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RzC-Mm-kHA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1160.8695652173915" y="182.8125"/>
+            <point key="canvasLocation" x="1159.2" y="181.77339901477833"/>
         </scene>
         <!--Weather Tab Bar-->
         <scene sceneID="oNA-jb-P2I">
@@ -140,7 +145,7 @@
             <objects>
                 <viewController id="Jwm-8B-BbB" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jYG-Vi-rjQ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="h4s-30-mg2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -156,6 +161,7 @@
         <image name="gear" catalog="system" width="128" height="119"/>
         <image name="location.fill" catalog="system" width="128" height="121"/>
         <image name="map" catalog="system" width="128" height="110"/>
+        <image name="sun" width="256" height="256"/>
         <image name="sun.min.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

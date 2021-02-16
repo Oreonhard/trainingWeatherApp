@@ -55,11 +55,7 @@ class TodayWeather: UIViewController {
 
 extension TodayWeather : CLLocationManagerDelegate {
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let locationValue : CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        print("Locatoin Coordinate : \(locationValue.longitude) \(locationValue.latitude)")
-    }
-    
+    //MARK: 위치(GPS) 관련 Delegate
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .authorizedAlways, .authorizedWhenInUse:
@@ -68,6 +64,12 @@ extension TodayWeather : CLLocationManagerDelegate {
             AreaName.text = "위치 조회에 실패하였습니다."
         }
     }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locationValue : CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        print("Location Coordinate : \(locationValue.longitude) \(locationValue.latitude)")
+    }
+    
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("locationManager did Fail : \(error.localizedDescription)")
