@@ -45,8 +45,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="28도" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pJL-rC-ZzJ">
-                                <rect key="frame" x="136" y="184" width="103" height="60"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="28°C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pJL-rC-ZzJ">
+                                <rect key="frame" x="130.66666666666666" y="184" width="114" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -69,7 +69,7 @@
                                 </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="su8-2L-dQd">
-                                <rect key="frame" x="222.66666666666663" y="131" width="20" height="22"/>
+                                <rect key="frame" x="222.66666666666666" y="131" width="20" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="f8i-ba-T1M"/>
                                     <constraint firstAttribute="height" constant="22" id="tJC-rk-ZJG"/>
@@ -80,7 +80,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="sun" translatesAutoresizingMaskIntoConstraints="NO" id="Rcz-JE-B2Z">
-                                <rect key="frame" x="59.666666666666629" y="251.99999999999997" width="255.99999999999997" height="126.66666666666666"/>
+                                <rect key="frame" x="59.666666666666657" y="251.99999999999997" width="255.99999999999997" height="126.66666666666666"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Iuc-n6-ujF"/>
@@ -107,6 +107,8 @@
                     <tabBarItem key="tabBarItem" title="오늘의 날씨" image="sun.min.fill" catalog="system" id="y7q-an-Ydy"/>
                     <connections>
                         <outlet property="AreaName" destination="Uij-AK-J5o" id="ygo-dn-UH7"/>
+                        <outlet property="Weather" destination="0Xi-pe-1Oi" id="iv0-Bz-bB1"/>
+                        <outlet property="temperature" destination="pJL-rC-ZzJ" id="f6b-PE-XSm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RzC-Mm-kHA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

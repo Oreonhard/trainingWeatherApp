@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  trainingWeatherApp
+
+  Created by 최준찬 on 2021/02/18.
+  Copyright © 2021 최준찬. All rights reserved.
+*/
+"base_Lang" = "en";
+"weatherAPI_Key" = "7598e74d3bf541351b2f91be10c4f76b";

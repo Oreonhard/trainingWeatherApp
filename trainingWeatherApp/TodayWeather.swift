@@ -9,11 +9,14 @@
 import UIKit
 import MapKit
 import CoreLocation
+import Alamofire
 
 class TodayWeather: UIViewController {
     
     //MARK: UI Variable
+    @IBOutlet weak var Weather: UILabel!
     @IBOutlet weak var AreaName: UILabel!
+    @IBOutlet weak var Temperature: UILabel!
     
     //MARK: Global Variable
     let locationManager = CLLocationManager();
@@ -67,7 +70,22 @@ extension TodayWeather : CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locationValue : CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        print("Location Coordinate : \(locationValue.longitude) \(locationValue.latitude)")
+        let URL = "https://api.openweathermap.org/data/2.5/weather?lat=\(locationValue.latitude)&lon=\(locationValue.longitude)&appid=\("weatherAPI_Key".localized)&units=metric&lang=\("base_Lang".localized)"
+        AF.request(URL) .responseJSON() { response in
+            switch response.result {
+            case .success:
+                if let result = try! response.result.get() as? [String:Any] {
+                    let main = result["main"] as! [String:Any]
+                    let weather = (result["weather"] as! NSArray)[0] as! [String:Any]
+                    
+                    self.AreaName.text = result["name"] as? String
+                    self.Temperature.text = "\((main["temp"] as? NSNumber)?.stringValue ?? "" )°C"
+                    self.Weather.text = weather["description"] as? String
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     
