@@ -20,6 +20,7 @@ class TodayWeather: UIViewController {
     
     //MARK: Global Variable
     let locationManager = CLLocationManager();
+    var activityIndicator : UIAlertController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +35,11 @@ class TodayWeather: UIViewController {
         
         switch status {
         case .authorizedAlways, .authorizedWhenInUse:
-            self.locationManager.requestLocation()
+            activityIndicator = UIAlertController(title: "위치 조회 중...", message: nil, preferredStyle: .alert)
+            activityIndicator?.addIndicator()
+            present(activityIndicator!, animated: true, completion: {
+                self.locationManager.requestLocation()
+            })
         case .denied:
             let alertCon = UIAlertController(title:"trainingWeatherApp", message: "위치 권한이 거부되어 있습니다.\n 앱 설정에서 권한을 허용해주세요.", preferredStyle: .alert)
             let alertAction = UIAlertAction(title: "확인", style: .default, handler: { _ in
@@ -69,7 +74,12 @@ extension TodayWeather : CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let locationValue : CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        guard let locationValue : CLLocationCoordinate2D = manager.location?.coordinate
+        else {
+            dismiss(animated: true, completion: nil)
+            return
+        }
+        
         let URL = "https://api.openweathermap.org/data/2.5/weather?lat=\(locationValue.latitude)&lon=\(locationValue.longitude)&appid=\("weatherAPI_Key".localized)&units=metric&lang=\("base_Lang".localized)"
         AF.request(URL) .responseJSON() { response in
             switch response.result {
@@ -79,12 +89,13 @@ extension TodayWeather : CLLocationManagerDelegate {
                     let weather = (result["weather"] as! NSArray)[0] as! [String:Any]
                     
                     self.AreaName.text = result["name"] as? String
-                    self.Temperature.text = "\((main["temp"] as? NSNumber)?.stringValue ?? "" )°C"
+                    self.Temperature.text = "\(String(format: "%.0f", round(main["temp"] as? Double ?? 0.0)))°C"
                     self.Weather.text = weather["description"] as? String
                 }
             case .failure(let error):
                 print(error)
             }
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
