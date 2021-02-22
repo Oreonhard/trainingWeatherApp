@@ -17,6 +17,7 @@ class TodayWeather: UIViewController {
     @IBOutlet weak var Weather: UILabel!
     @IBOutlet weak var AreaName: UILabel!
     @IBOutlet weak var Temperature: UILabel!
+    @IBOutlet weak var WeatherIcon: UIImageView!
     
     //MARK: Global Variable
     let locationManager = CLLocationManager();
@@ -59,6 +60,24 @@ class TodayWeather: UIViewController {
         }
     }
     
+    func changeWeatherIcon(weatherID: Int) {
+        switch WeatherStatusGet(weatherID: weatherID) {
+        case .Clear:
+            WeatherIcon.image = #imageLiteral(resourceName: "sun")
+        case .Clouds:
+            WeatherIcon.image = #imageLiteral(resourceName: "cloudy")
+        case .Rain:
+            WeatherIcon.image = #imageLiteral(resourceName: "rainy")
+        case .Drizzle:
+            WeatherIcon.image = #imageLiteral(resourceName: "rain")
+        case .Thunder:
+            WeatherIcon.image = #imageLiteral(resourceName: "thunder")
+        case .Snow:
+            WeatherIcon.image = #imageLiteral(resourceName: "snowy")
+        case .Atmosphere:
+            WeatherIcon.image = #imageLiteral(resourceName: "mist")
+        }
+    }
 }
 
 extension TodayWeather : CLLocationManagerDelegate {
@@ -91,6 +110,7 @@ extension TodayWeather : CLLocationManagerDelegate {
                     self.AreaName.text = result["name"] as? String
                     self.Temperature.text = "\(String(format: "%.0f", round(main["temp"] as? Double ?? 0.0)))°C"
                     self.Weather.text = weather["description"] as? String
+                    self.changeWeatherIcon(weatherID: weather["id"] as? Int ?? 800)
                 }
             case .failure(let error):
                 print(error)

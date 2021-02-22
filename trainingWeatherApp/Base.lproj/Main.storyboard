@@ -72,7 +72,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="Uij-AK-J5o" firstAttribute="top" secondItem="0Xi-pe-1Oi" secondAttribute="bottom" constant="15" id="0jR-mB-ANA"/>
                                     <constraint firstItem="Rcz-JE-B2Z" firstAttribute="centerX" secondItem="qse-qq-WEr" secondAttribute="centerX" id="27d-XW-yrr"/>
@@ -123,8 +123,9 @@
                     <tabBarItem key="tabBarItem" title="오늘의 날씨" image="sun.min.fill" catalog="system" id="y7q-an-Ydy"/>
                     <connections>
                         <outlet property="AreaName" destination="Uij-AK-J5o" id="ygo-dn-UH7"/>
+                        <outlet property="Temperature" destination="pJL-rC-ZzJ" id="1OY-P7-0Wy"/>
                         <outlet property="Weather" destination="0Xi-pe-1Oi" id="iv0-Bz-bB1"/>
-                        <outlet property="temperature" destination="pJL-rC-ZzJ" id="f6b-PE-XSm"/>
+                        <outlet property="WeatherIcon" destination="Rcz-JE-B2Z" id="DN3-Mf-1rw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RzC-Mm-kHA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -10,6 +10,7 @@
 		8D306E3125DEB1AB008CE5F5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D306E3325DEB1AB008CE5F5 /* Localizable.strings */; };
 		8D306E3925DEB2A5008CE5F5 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D306E3825DEB2A5008CE5F5 /* Extension.swift */; };
 		8D60876A251CECE7001B6C9A /* TodayWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D608769251CECE7001B6C9A /* TodayWeather.swift */; };
+		8D840F7D25E3FC21007EA1CA /* enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D840F7925E3F6BB007EA1CA /* enum.swift */; };
 		8DC8547324FE9D6A003DC26A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC8547224FE9D6A003DC26A /* AppDelegate.swift */; };
 		8DC8547524FE9D6A003DC26A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC8547424FE9D6A003DC26A /* SceneDelegate.swift */; };
 		8DC8547724FE9D6A003DC26A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC8547624FE9D6A003DC26A /* ViewController.swift */; };
@@ -28,6 +29,7 @@
 		8D306E3825DEB2A5008CE5F5 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		8D306E3C25DEBA47008CE5F5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8D608769251CECE7001B6C9A /* TodayWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWeather.swift; sourceTree = "<group>"; };
+		8D840F7925E3F6BB007EA1CA /* enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enum.swift; sourceTree = "<group>"; };
 		8DC8546F24FE9D6A003DC26A /* trainingWeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = trainingWeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DC8547224FE9D6A003DC26A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8DC8547424FE9D6A003DC26A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				8D608769251CECE7001B6C9A /* TodayWeather.swift */,
 				8DEAF021252E0E2000625E4C /* WeatherTabBar.swift */,
 				8D306E3825DEB2A5008CE5F5 /* Extension.swift */,
+				8D840F7925E3F6BB007EA1CA /* enum.swift */,
 				8DC8547B24FE9D6B003DC26A /* Assets.xcassets */,
 				8DC8547D24FE9D6B003DC26A /* LaunchScreen.storyboard */,
 				8DC8548024FE9D6B003DC26A /* Info.plist */,
@@ -232,6 +235,7 @@
 			files = (
 				8DC8547724FE9D6A003DC26A /* ViewController.swift in Sources */,
 				8DC8547324FE9D6A003DC26A /* AppDelegate.swift in Sources */,
+				8D840F7D25E3FC21007EA1CA /* enum.swift in Sources */,
 				8D60876A251CECE7001B6C9A /* TodayWeather.swift in Sources */,
 				8D306E3925DEB2A5008CE5F5 /* Extension.swift in Sources */,
 				8DEAF022252E0E2000625E4C /* WeatherTabBar.swift in Sources */,
