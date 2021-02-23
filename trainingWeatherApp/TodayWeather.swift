@@ -19,6 +19,8 @@ class TodayWeather: UIViewController {
     @IBOutlet weak var Temperature: UILabel!
     @IBOutlet weak var WeatherIcon: UIImageView!
     
+    @IBOutlet weak var WeekWeather: UICollectionView!
+    
     //MARK: Global Variable
     let locationManager = CLLocationManager();
     var activityIndicator : UIAlertController?
@@ -27,6 +29,9 @@ class TodayWeather: UIViewController {
         super.viewDidLoad()
         
         self.locationManager.delegate = self
+        self.WeekWeather.delegate = self
+        self.WeekWeather.dataSource = self
+        
         self.locationManager.requestAlwaysAuthorization()
     }
     
@@ -122,5 +127,21 @@ extension TodayWeather : CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("locationManager did Fail : \(error.localizedDescription)")
+    }
+}
+
+extension TodayWeather: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 20
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TestCollectionCell", for: indexPath)
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 90, height: WeekWeather.frame.height)
     }
 }
