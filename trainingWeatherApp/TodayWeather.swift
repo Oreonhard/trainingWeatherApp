@@ -19,7 +19,9 @@ class TodayWeather: UIViewController {
     @IBOutlet weak var Temperature: UILabel!
     @IBOutlet weak var WeatherIcon: UIImageView!
     
-    @IBOutlet weak var WeekWeather: UICollectionView!
+    @IBOutlet weak var HourWeather: UICollectionView!
+    
+    @IBOutlet weak var WeekWeather: UITableView!
     
     //MARK: Global Variable
     let locationManager = CLLocationManager();
@@ -29,6 +31,8 @@ class TodayWeather: UIViewController {
         super.viewDidLoad()
         
         self.locationManager.delegate = self
+        self.HourWeather.delegate = self
+        self.HourWeather.dataSource = self
         self.WeekWeather.delegate = self
         self.WeekWeather.dataSource = self
         
@@ -132,16 +136,30 @@ extension TodayWeather : CLLocationManagerDelegate {
 
 extension TodayWeather: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return 12
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TestCollectionCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HourCollectionCell", for: indexPath)
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 90, height: WeekWeather.frame.height)
+        return CGSize(width: 90, height: HourWeather.frame.height)
     }
+}
+
+extension TodayWeather: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 7
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DayTableCell", for: indexPath)
+        
+        return cell
+    }
+    
+    
 }
