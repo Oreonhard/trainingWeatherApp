@@ -216,6 +216,8 @@
                         <outlet property="AreaName" destination="Uij-AK-J5o" id="ygo-dn-UH7"/>
                         <outlet property="HourWeather" destination="327-my-UHL" id="PhO-Qs-QcO"/>
                         <outlet property="Temperature" destination="pJL-rC-ZzJ" id="1OY-P7-0Wy"/>
+                        <outlet property="TodayView" destination="qse-qq-WEr" id="luK-k4-D0o"/>
+                        <outlet property="TodayViewHeight" destination="Ihw-jk-jsN" id="zIM-4c-eTu"/>
                         <outlet property="Weather" destination="0Xi-pe-1Oi" id="iv0-Bz-bB1"/>
                         <outlet property="WeatherIcon" destination="Rcz-JE-B2Z" id="DN3-Mf-1rw"/>
                         <outlet property="WeekWeather" destination="49J-zW-fbl" id="AZi-iI-Sby"/>

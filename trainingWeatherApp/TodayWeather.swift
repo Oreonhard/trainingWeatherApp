@@ -14,6 +14,7 @@ import Alamofire
 class TodayWeather: UIViewController {
     
     //MARK: UI Variable
+    @IBOutlet weak var TodayView: UIView!
     @IBOutlet weak var Weather: UILabel!
     @IBOutlet weak var AreaName: UILabel!
     @IBOutlet weak var Temperature: UILabel!
@@ -23,8 +24,13 @@ class TodayWeather: UIViewController {
     
     @IBOutlet weak var WeekWeather: UITableView!
     
+    //MARK: Constraint Variable
+    @IBOutlet weak var TodayViewHeight: NSLayoutConstraint!
+    
     //MARK: Global Variable
     let locationManager = CLLocationManager();
+    var TodayViewMaxHeight : CGFloat = 0.0
+    var TodayViewMinHeight : CGFloat = 0.0
     var activityIndicator : UIAlertController?
     
     override func viewDidLoad() {
@@ -39,6 +45,11 @@ class TodayWeather: UIViewController {
         self.locationManager.requestAlwaysAuthorization()
     }
     
+    override func viewSafeAreaInsetsDidChange() {
+        TodayViewMaxHeight = TodayView.frame.height
+        let safeAreaHeight = self.view.safeAreaLayoutGuide.layoutFrame.height
+        TodayViewMinHeight = safeAreaHeight * 0.6
+    }
     
     @IBAction func reloadLocation(_ sender: Any) {
         let status = CLLocationManager.authorizationStatus()
@@ -160,6 +171,10 @@ extension TodayWeather: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
-    
-    
+}
+
+extension TodayWeather: UIScrollViewDelegate {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        print("Start Drag")
+    }
 }
