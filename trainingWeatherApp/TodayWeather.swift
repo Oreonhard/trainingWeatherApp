@@ -45,10 +45,11 @@ class TodayWeather: UIViewController {
         self.locationManager.requestAlwaysAuthorization()
     }
     
-    override func viewSafeAreaInsetsDidChange() {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         TodayViewMaxHeight = TodayView.frame.height
-        let safeAreaHeight = self.view.safeAreaLayoutGuide.layoutFrame.height
-        TodayViewMinHeight = safeAreaHeight * 0.6
+        TodayViewMinHeight = TodayView.frame.height * 0.5
     }
     
     @IBAction func reloadLocation(_ sender: Any) {
@@ -175,6 +176,20 @@ extension TodayWeather: UITableViewDelegate, UITableViewDataSource {
 
 extension TodayWeather: UIScrollViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        print("Start Drag")
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView == WeekWeather {
+            let y : CGFloat = scrollView.contentOffset.y
+            let newTodayViewHeight : CGFloat = TodayView.frame.height - y
+            if newTodayViewHeight > TodayViewMaxHeight {
+                TodayViewHeight.constant = TodayViewMaxHeight
+            } else if newTodayViewHeight < TodayViewMinHeight {
+                TodayViewHeight.constant = TodayViewMinHeight
+            } else {
+                TodayViewHeight.constant = newTodayViewHeight
+                scrollView.contentOffset.y = 0
+            }
+        }
     }
 }
