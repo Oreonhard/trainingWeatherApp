@@ -29,3 +29,13 @@ extension UIAlertController {
         activityIndicator.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -20).isActive = true
     }
 }
+
+extension Date {
+    func toString( dateFormat format: String ) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        dateFormatter.timeZone = TimeZone.autoupdatingCurrent
+        dateFormatter.locale = Locale.current
+        return dateFormatter.string(from: self)
+    }
+}
