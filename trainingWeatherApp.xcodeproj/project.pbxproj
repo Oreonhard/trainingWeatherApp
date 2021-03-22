@@ -11,6 +11,7 @@
 		8D306E3925DEB2A5008CE5F5 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D306E3825DEB2A5008CE5F5 /* Extension.swift */; };
 		8D5AA39B2607338B00362AE9 /* TimeWeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5AA3992607338B00362AE9 /* TimeWeatherTableViewCell.swift */; };
 		8D5AA39C2607338B00362AE9 /* TimeWeatherTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D5AA39A2607338B00362AE9 /* TimeWeatherTableViewCell.xib */; };
+		8D5AA39F2608EA0900362AE9 /* WeekTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5AA39E2608EA0900362AE9 /* WeekTableViewCell.swift */; };
 		8D63E8F026059AAC00E84F91 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D63E8EE26059AAC00E84F91 /* CollectionViewCell.swift */; };
 		8D63E8F126059AAC00E84F91 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D63E8EF26059AAC00E84F91 /* CollectionViewCell.xib */; };
 		8D63E8FC2605A7F100E84F91 /* TodayWeatherTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D63E8FB2605A7F100E84F91 /* TodayWeatherTableViewController.swift */; };
@@ -34,6 +35,7 @@
 		8D306E3C25DEBA47008CE5F5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8D5AA3992607338B00362AE9 /* TimeWeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeWeatherTableViewCell.swift; sourceTree = "<group>"; };
 		8D5AA39A2607338B00362AE9 /* TimeWeatherTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeWeatherTableViewCell.xib; sourceTree = "<group>"; };
+		8D5AA39E2608EA0900362AE9 /* WeekTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTableViewCell.swift; sourceTree = "<group>"; };
 		8D63E8EE26059AAC00E84F91 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		8D63E8EF26059AAC00E84F91 /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		8D63E8FB2605A7F100E84F91 /* TodayWeatherTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWeatherTableViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				8D63E8EF26059AAC00E84F91 /* CollectionViewCell.xib */,
 				8D5AA3992607338B00362AE9 /* TimeWeatherTableViewCell.swift */,
 				8D5AA39A2607338B00362AE9 /* TimeWeatherTableViewCell.xib */,
+				8D5AA39E2608EA0900362AE9 /* WeekTableViewCell.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				8DC8547724FE9D6A003DC26A /* ViewController.swift in Sources */,
 				8DC8547324FE9D6A003DC26A /* AppDelegate.swift in Sources */,
 				8D63E8FC2605A7F100E84F91 /* TodayWeatherTableViewController.swift in Sources */,
+				8D5AA39F2608EA0900362AE9 /* WeekTableViewCell.swift in Sources */,
 				8D5AA39B2607338B00362AE9 /* TimeWeatherTableViewCell.swift in Sources */,
 				8D63E8F026059AAC00E84F91 /* CollectionViewCell.swift in Sources */,
 				8D840F7D25E3FC21007EA1CA /* enum.swift in Sources */,

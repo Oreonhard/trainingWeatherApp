@@ -13,7 +13,7 @@ import Alamofire
 
 class TodayWeatherTableViewController: UITableViewController {
     
-    //MARK: IBOutlet
+    //MARK: Today View IBOutlet
     @IBOutlet weak var todayView : UIView!
     @IBOutlet weak var weatherStatus : UILabel!
     @IBOutlet weak var areaName : UILabel!
@@ -40,6 +40,19 @@ class TodayWeatherTableViewController: UITableViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let s_areaName = UserDefaults.standard.string(forKey: "areaName"), let currentDic = UserDefaults.standard.dictionary(forKey: "currentDic") {
+            let weatherDic = (currentDic["weather"] as! NSArray)[0] as! [String:Any]
+            areaName.text = s_areaName
+            weatherStatus.text = weatherDic["description"] as? String
+            temperature.text = "\(String(format: "%.0f", round(currentDic["temp"] as? Double ?? 0.0)))°C"
+            weatherIcon.image = self.getWeatherIcon(weatherID: weatherDic["id"] as? Int ?? 800)
+        }
+        
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -53,8 +66,6 @@ class TodayWeatherTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell : UITableViewCell
-        
         if indexPath.section == 0 && indexPath.row == 0 {
             let customCell = tableView.dequeueReusableCell(withIdentifier: "timeWeatherTableVIewCell") as! TimeWeatherTableViewCell
             let cellNib = UINib(nibName: "CollectionViewCell", bundle: nil)
@@ -65,12 +76,22 @@ class TodayWeatherTableViewController: UITableViewController {
             hourWeatherCollectionView!.delegate = self
             hourWeatherCollectionView!.dataSource = self
             
-            cell = customCell
+            return customCell
         } else {
-            cell = tableView.dequeueReusableCell(withIdentifier: "weekWeatherCell")!
+            let cell = tableView.dequeueReusableCell(withIdentifier: "weekWeatherCell") as! WeekTableViewCell
+            if let dailyArr = UserDefaults.standard.array(forKey: "dailyArr") {
+                let dailyDic = dailyArr[indexPath.row-1] as! [String:Any]
+                
+                cell.dayLabel.text = Date(timeIntervalSince1970: dailyDic["dt"] as! TimeInterval).toString(dateFormat: "eeee")
+                cell.weekWeatherIcon.image = getWeatherIcon(weatherID: ((dailyDic["weather"] as! NSArray)[0] as! [String:Any])["id"] as? Int ?? 800)
+                cell.weekHighTemp.text = String(format: "%.0f", round((dailyDic["temp"] as! [String:Double])["max"] ?? 0))
+                cell.weekLowerTemp.text = String(format: "%.0f", round((dailyDic["temp"] as! [String:Double])["min"] ?? 0))
+                
+                return cell
+            } else {
+                return cell
+            }
         }
-        
-        return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

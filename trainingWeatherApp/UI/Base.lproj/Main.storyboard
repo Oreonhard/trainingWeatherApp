@@ -130,7 +130,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="weekWeatherCell" rowHeight="70" id="sHx-xa-IaE">
+                            <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="weekWeatherCell" rowHeight="70" id="sHx-xa-IaE" customClass="WeekTableViewCell" customModule="trainingWeatherApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="439" width="375" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sHx-xa-IaE" id="Tff-5j-Op9">
@@ -177,6 +177,12 @@
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" notEnabled="YES"/>
                                 </accessibility>
+                                <connections>
+                                    <outlet property="dayLabel" destination="lk1-k0-ANH" id="IHt-jH-Du8"/>
+                                    <outlet property="weekHighTemp" destination="2Rf-e4-Gb9" id="Ula-3l-BDh"/>
+                                    <outlet property="weekLowerTemp" destination="Lqd-bs-dxp" id="6nz-6W-17Y"/>
+                                    <outlet property="weekWeatherIcon" destination="C9Z-r0-6jK" id="8YW-4I-3do"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
