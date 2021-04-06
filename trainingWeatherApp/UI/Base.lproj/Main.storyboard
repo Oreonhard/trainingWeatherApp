@@ -4,26 +4,87 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--지역별 날씨-->
-        <scene sceneID="coE-9D-kMS">
+        <scene sceneID="bEI-kR-avg">
             <objects>
-                <viewController id="dF5-Ub-9NX" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="QxK-0W-jKM">
+                <tableViewController id="sdG-1r-BZ2" customClass="RegionWeatherTableViewController" customModule="trainingWeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hlA-IW-hBE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="aRQ-zb-ojl"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="지역별 날씨" image="map" catalog="system" id="iqS-RQ-tZ3"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HCT-4D-HtQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="iAy-ED-fcj">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="지금 어디?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BnY-R8-Klp">
+                                    <rect key="frame" x="8" y="8" width="72" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="강남구" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UO3-Vv-3n7">
+                                    <rect key="frame" x="15" y="37" width="65" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10°C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OOA-7h-8BF">
+                                    <rect key="frame" x="296" y="22" width="66" height="36"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="5nv-Rs-Nik">
+                                <rect key="frame" x="0.0" y="108" width="375" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5nv-Rs-Nik" id="z0G-Ci-PeV">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="지역명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRA-Q4-PbG">
+                                            <rect key="frame" x="16" y="25" width="65" height="30"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10°C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mxI-Xh-Mao">
+                                            <rect key="frame" x="293" y="22" width="66" height="36"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="mxI-Xh-Mao" firstAttribute="centerY" secondItem="z0G-Ci-PeV" secondAttribute="centerY" id="66i-XU-xKn"/>
+                                        <constraint firstItem="iRA-Q4-PbG" firstAttribute="leading" secondItem="z0G-Ci-PeV" secondAttribute="leadingMargin" id="EwA-tz-dwz"/>
+                                        <constraint firstItem="mxI-Xh-Mao" firstAttribute="trailing" secondItem="z0G-Ci-PeV" secondAttribute="trailingMargin" id="TWE-r2-OCE"/>
+                                        <constraint firstItem="iRA-Q4-PbG" firstAttribute="centerY" secondItem="z0G-Ci-PeV" secondAttribute="centerY" id="vZm-Bj-qtl"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="sdG-1r-BZ2" id="WrS-cy-WTg"/>
+                            <outlet property="delegate" destination="sdG-1r-BZ2" id="MRw-6M-QMJ"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="지역별 날씨" image="map" catalog="system" id="uhP-i9-HUq"/>
+                    <navigationItem key="navigationItem" id="s6G-06-llw"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mtS-SE-Lm3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1161" y="-496"/>
+            <point key="canvasLocation" x="1161" y="-485"/>
         </scene>
         <!--Weather Tab Bar-->
         <scene sceneID="oNA-jb-P2I">
@@ -40,30 +101,14 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <segue destination="dF5-Ub-9NX" kind="relationship" relationship="viewControllers" id="SCM-ab-tZl"/>
+                        <segue destination="sdG-1r-BZ2" kind="relationship" relationship="viewControllers" id="bro-Ar-efK"/>
                         <segue destination="TPu-j3-tHi" kind="relationship" relationship="viewControllers" id="WGy-O3-Xd5"/>
-                        <segue destination="Jwm-8B-BbB" kind="relationship" relationship="viewControllers" id="UAq-ES-vMK"/>
+                        <segue destination="blF-ui-g1C" kind="relationship" relationship="viewControllers" id="YHo-F0-3UN"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="szF-LX-1QX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-67" y="184"/>
-        </scene>
-        <!--설정-->
-        <scene sceneID="O4w-vK-swj">
-            <objects>
-                <viewController id="Jwm-8B-BbB" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="jYG-Vi-rjQ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="h4s-30-mg2"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="설정" image="gear" catalog="system" id="oh0-z1-oIj"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Lhn-9y-gze" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1161" y="890"/>
         </scene>
         <!--오늘의 날씨-->
         <scene sceneID="Ezq-RC-agg">
@@ -204,9 +249,45 @@
             </objects>
             <point key="canvasLocation" x="1161" y="184"/>
         </scene>
+        <!--설정-->
+        <scene sceneID="yAe-11-82x">
+            <objects>
+                <tableViewController id="blF-ui-g1C" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="549-ik-Gka">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="Q7V-N7-Czg">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <navigationItem title="설정" id="1YU-va-BYF"/>
+                            </items>
+                        </navigationBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="yLE-GZ-sIN">
+                                <rect key="frame" x="0.0" y="72" width="375" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yLE-GZ-sIN" id="vbD-bd-KSw">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="blF-ui-g1C" id="fMA-dC-lb8"/>
+                            <outlet property="delegate" destination="blF-ui-g1C" id="qFq-Cn-tQJ"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="설정" image="gearshape" catalog="system" id="JNc-n8-muT"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IMH-33-YCD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1161" y="910"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="gear" catalog="system" width="128" height="119"/>
+        <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="location.fill" catalog="system" width="128" height="121"/>
         <image name="map" catalog="system" width="128" height="110"/>
         <image name="sun" width="256" height="256"/>
