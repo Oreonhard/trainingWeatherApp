@@ -175,7 +175,7 @@ extension TodayWeatherTableViewController : CLLocationManagerDelegate {
         
         CLGeocoder().reverseGeocodeLocation(.init(latitude: locationValue.latitude, longitude: locationValue.longitude), completionHandler: { (placeMarks, _) -> Void in
             placeMarks?.forEach({ (placeMark) in
-                if let city = placeMark.locality {
+                if let city = placeMark.locality ?? placeMark.name {
                     self.areaName.text = city
                     UserDefaults.standard.setValue(city, forKey: "areaName")
                 } else {
