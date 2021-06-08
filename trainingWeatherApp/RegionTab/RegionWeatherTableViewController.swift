@@ -12,7 +12,7 @@ import Alamofire
 
 class RegionWeatherTableViewController: UITableViewController {
     
-    private var regionInfoArr : [[String:Any]] = (UserDefaults.standard.array(forKey: "regionInfos") ?? []) as [[String:Any]]
+    private var regionInfoArr : [[String:Any]] = (UserDefaults.standard.array(forKey: "regionInfos") ?? []) as! [[String:Any]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +77,20 @@ class RegionWeatherTableViewController: UITableViewController {
             UserDefaults.standard.setValue(regionInfoArr, forKey: "regionInfos")
             tableView.deleteRows(at: [indexPath], with: .bottom)
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "presentRegionWeather", sender: indexPath.row)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let vc = segue.destination as? PresentWeatherTableViewController else { return }
+        print("Segue!")
+        
+        let index = sender as! Int
+        vc.regionLon = regionInfoArr[index]["regionLon"] as? Double
+        vc.regionLat = regionInfoArr[index]["regionLat"] as? Double
+        vc.p_areaName = regionInfoArr[index]["regionName"] as? String
     }
     
     @objc func selectRegion(_ noti: Notification) {
