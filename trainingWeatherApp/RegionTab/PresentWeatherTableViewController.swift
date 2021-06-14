@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 import Alamofire
+import SkeletonView
 
 class PresentWeatherTableViewController: UITableViewController {
     
@@ -22,13 +23,12 @@ class PresentWeatherTableViewController: UITableViewController {
     
     //MARK: Global Variable
     var hourWeatherCollectionView : UICollectionView?
-    var activityIndicator : UIAlertController = UIAlertController(title: "조회 중...", message: nil, preferredStyle: .alert)
+    var activityIndicator : UIAlertController = UIAlertController(title: "alert_Inquire_msg".localized, message: nil, preferredStyle: .alert)
     var regionLon : CLLocationDegrees?
     var regionLat : CLLocationDegrees?
     var dailyArr : NSArray?
     var hourlyArr : NSArray?
     var p_areaName : String?
-    var firstViewAppear = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +39,8 @@ class PresentWeatherTableViewController: UITableViewController {
         self.tableView.dataSource = self
         
         let nibCell = UINib(nibName: "TimeWeatherTableViewCell", bundle: nil)
-        self.tableView.register(nibCell, forCellReuseIdentifier: "timeWeatherTableVIewCell")
+        self.tableView.register(nibCell, forCellReuseIdentifier: "timeWeatherTableViewCell")
+        self.tableView.estimatedRowHeight = UITableView.automaticDimension
         
         if let name = p_areaName { self.areaName.text = name }
         else { self.areaName.text = "ERROR" }
@@ -49,12 +50,12 @@ class PresentWeatherTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if firstViewAppear {
-            present(activityIndicator, animated: true, completion: {
-                self.getWeather()
-            })
-            firstViewAppear = false
-        }
+        self.view.showAnimatedGradientSkeleton()
+        todayView.showAnimatedGradientSkeleton()
+        
+        self.present(activityIndicator, animated: true, completion: {
+            self.getWeather()
+        })
     }
     
     // MARK: - Table view data source
@@ -71,7 +72,7 @@ class PresentWeatherTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 && indexPath.row == 0 {
-            let customCell = tableView.dequeueReusableCell(withIdentifier: "timeWeatherTableVIewCell") as! TimeWeatherTableViewCell
+            let customCell = tableView.dequeueReusableCell(withIdentifier: "timeWeatherTableViewCell") as! TimeWeatherTableViewCell
             let cellNib = UINib(nibName: "CollectionViewCell", bundle: nil)
             
             hourWeatherCollectionView = customCell.timeWeatherCollectionView
@@ -96,13 +97,6 @@ class PresentWeatherTableViewController: UITableViewController {
                 return cell
             }
         }
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 && indexPath.row == 0 {
-            return 128
-        }
-        return 60
     }
     
     func getWeatherIcon(weatherID: Int) -> UIImage {
@@ -135,11 +129,11 @@ class PresentWeatherTableViewController: UITableViewController {
         guard let lat = regionLat, let lon = regionLon else {
             self.weatherStatus.text = "ERROR"
             self.temperature.text = "ERROR"
-            self.areaName.text = "조회 중 오류가 발생했습니다."
+            self.areaName.text = "ERROR"
             self.weatherIcon.image = self.getWeatherIcon(weatherID: 800)
             return
         }
-        let URL = "https://api.openweathermap.org/data/2.5/onecall?lat=\(lat)&lon=\(lon)&exclude=minutely,alerts&appid=\("weatherAPI_Key".localized)&units=metric&lang=\(Locale.current.regionCode?.lowercased() ?? "base_Lang".localized)"
+        let URL = "https://api.openweathermap.org/data/2.5/onecall?lat=\(lat)&lon=\(lon)&exclude=minutely,alerts&appid=\("weatherAPI_Key".localized)&units=\(UserDefaults.standard.bool(forKey: "isFahrenheit") ? "imperial" : "metric")&lang=\(Locale.current.regionCode?.lowercased() ?? "base_Lang".localized)"
         AF.request(URL) .responseJSON() { response in
             switch response.result {
             case .success:
@@ -149,12 +143,12 @@ class PresentWeatherTableViewController: UITableViewController {
                     self.dailyArr = result["daily"] as? NSArray
                     self.hourlyArr = result["hourly"] as? NSArray
                     
-                    self.hourWeatherCollectionView?.reloadData()
-                    self.tableView.reloadData()
+                    self.view.hideSkeleton(reloadDataAfter: true, transition: .none)
+                    self.todayView.hideSkeleton()
                     
                     let weatherDic = (currentDic["weather"] as! NSArray)[0] as! [String:Any]
                     self.weatherStatus.text = weatherDic["description"] as? String
-                    self.temperature.text = "\(String(format: "%.0f", round(currentDic["temp"] as? Double ?? 0.0)))°C"
+                    self.temperature.text = "\(String(format: "%.0f", round(currentDic["temp"] as? Double ?? 0.0)))\(UserDefaults.standard.bool(forKey: "isFahrenheit") ? "°F" : "°C")"
                     self.weatherIcon.image = self.getWeatherIcon(weatherID: weatherDic["id"] as? Int ?? 800)
                     
                 }
@@ -167,7 +161,6 @@ class PresentWeatherTableViewController: UITableViewController {
 }
 
 extension PresentWeatherTableViewController : UICollectionViewDelegate, UICollectionViewDataSource {
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 12
     }
@@ -178,11 +171,39 @@ extension PresentWeatherTableViewController : UICollectionViewDelegate, UICollec
             let hourlyDic = hourlyArr[indexPath.row] as! [String:Any]
             cell.time.text = Date(timeIntervalSince1970: hourlyDic["dt"] as! TimeInterval).toString(dateFormat: "HH:mm")
             cell.weatherIcon.image = getWeatherIcon(weatherID: (((hourlyDic["weather"] as! NSArray)[0]) as! [String:Any])["id"] as? Int ?? 800)
-            cell.temperature.text = "\(String(format: "%.0f", round(hourlyDic["temp"] as? Double ?? 0.0)))°C"
+            cell.temperature.text = "\(String(format: "%.0f", round(hourlyDic["temp"] as? Double ?? 0.0)))\(UserDefaults.standard.bool(forKey: "isFahrenheit") ? "°F" : "°C")"
             
             return cell
         } else {
             return collectionView.dequeueReusableCell(withReuseIdentifier: "hourCollectionCell", for: indexPath)
         }
+    }
+}
+
+extension PresentWeatherTableViewController : SkeletonTableViewDataSource {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 && indexPath.row == 0 {
+            return 128
+        }
+        return 60
+    }
+    
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 && indexPath.row == 0 {
+            return 128
+        }
+        return 60
+    }
+    
+    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        if indexPath.section == 0 && indexPath.row == 0 {
+            return "timeWeatherTableViewCell"
+        } else {
+            return "weekWeatherCell"
+        }
+    }
+
+    func collectionSkeletonView(_ skeletonView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 8
     }
 }

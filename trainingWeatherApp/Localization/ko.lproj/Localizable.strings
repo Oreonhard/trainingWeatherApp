@@ -5,5 +5,7 @@
   Created by 최준찬 on 2021/02/18.
   Copyright © 2021 최준찬. All rights reserved.
 */
-"base_Lang" = "kr";
+"base_Lang" = "KR";
 "weatherAPI_Key" = "7598e74d3bf541351b2f91be10c4f76b";
+"alert_Inquire_msg" = "조회 중...";
+"region_tab_title" = "지역별 날씨";

@@ -19,16 +19,14 @@ class TodayWeatherTableViewController: UITableViewController {
     @IBOutlet weak var areaName : UILabel!
     @IBOutlet weak var temperature : UILabel!
     @IBOutlet weak var weatherIcon : UIImageView!
+    @IBOutlet weak var loadingIndicator : UIActivityIndicatorView!
     
     //MARK: Global Variable
     let locationManager = CLLocationManager()
     var hourWeatherCollectionView : UICollectionView?
-    var activityIndicator : UIAlertController = UIAlertController(title: "위치 조회 중...", message: nil, preferredStyle: .alert)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        activityIndicator.addIndicator()
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -36,21 +34,21 @@ class TodayWeatherTableViewController: UITableViewController {
         self.locationManager.delegate = self
         
         let nibCell = UINib(nibName: "TimeWeatherTableViewCell", bundle: nil)
-        self.tableView.register(nibCell, forCellReuseIdentifier: "timeWeatherTableVIewCell")
+        self.tableView.register(nibCell, forCellReuseIdentifier: "timeWeatherTableViewCell")
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         if let s_areaName = UserDefaults.standard.string(forKey: "areaName"), let currentDic = UserDefaults.standard.dictionary(forKey: "currentDic") {
             let weatherDic = (currentDic["weather"] as! NSArray)[0] as! [String:Any]
             areaName.text = s_areaName
             weatherStatus.text = weatherDic["description"] as? String
-            temperature.text = "\(String(format: "%.0f", round(currentDic["temp"] as? Double ?? 0.0)))°C"
+            temperature.text = currentDic["temp"] as? String ?? "ERROR"
             weatherIcon.image = self.getWeatherIcon(weatherID: weatherDic["id"] as? Int ?? 800)
         }
-        
+
     }
     
     // MARK: - Table view data source
@@ -67,7 +65,7 @@ class TodayWeatherTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 && indexPath.row == 0 {
-            let customCell = tableView.dequeueReusableCell(withIdentifier: "timeWeatherTableVIewCell") as! TimeWeatherTableViewCell
+            let customCell = tableView.dequeueReusableCell(withIdentifier: "timeWeatherTableViewCell") as! TimeWeatherTableViewCell
             let cellNib = UINib(nibName: "CollectionViewCell", bundle: nil)
             
             hourWeatherCollectionView = customCell.timeWeatherCollectionView
@@ -126,9 +124,8 @@ class TodayWeatherTableViewController: UITableViewController {
         
         switch status {
         case .authorizedAlways, .authorizedWhenInUse:
-            present(activityIndicator, animated: true, completion: {
-                self.locationManager.requestLocation()
-            })
+            loadingIndicator.startAnimating()
+            self.locationManager.requestLocation()
         case .denied:
             let alertCon = UIAlertController(title:"trainingWeatherApp", message: "위치 권한이 거부되어 있습니다.\n 앱 설정에서 권한을 허용해주세요.", preferredStyle: .alert)
             let alertAction = UIAlertAction(title: "확인", style: .default, handler: { _ in
@@ -156,9 +153,8 @@ extension TodayWeatherTableViewController : CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .authorizedAlways, .authorizedWhenInUse:
-            present(activityIndicator, animated: true, completion: {
-                self.locationManager.requestLocation()
-            })
+            loadingIndicator.startAnimating()
+            self.locationManager.requestLocation()
         case .restricted , .denied :
             areaName.text = "위치 조회에 실패하였습니다."
         case .notDetermined:
@@ -169,7 +165,7 @@ extension TodayWeatherTableViewController : CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locationValue : CLLocationCoordinate2D = manager.location?.coordinate
         else {
-            dismiss(animated: true, completion: nil)
+            loadingIndicator.stopAnimating()
             return
         }
         
@@ -184,13 +180,15 @@ extension TodayWeatherTableViewController : CLLocationManagerDelegate {
             })
         })
         
-        let URL = "https://api.openweathermap.org/data/2.5/onecall?lat=\(locationValue.latitude)&lon=\(locationValue.longitude)&exclude=minutely,alerts&appid=\("weatherAPI_Key".localized)&units=metric&lang=\(Locale.current.regionCode?.lowercased() ?? "base_Lang".localized)"
+        let URL = "https://api.openweathermap.org/data/2.5/onecall?lat=\(locationValue.latitude)&lon=\(locationValue.longitude)&exclude=minutely,alerts&appid=\("weatherAPI_Key".localized)&units=\(UserDefaults.standard.bool(forKey: "isFahrenheit") ? "imperial" : "metric")&lang=\(Locale.current.regionCode?.lowercased() ?? "base_Lang".localized)"
         AF.request(URL) .responseJSON() { response in
             switch response.result {
             case .success:
                 if let result = try! response.result.get() as? [String:Any] {
                     
-                    let currentDic = result["current"] as! [String:Any]
+                    var currentDic = result["current"] as! [String:Any]
+                    currentDic["temp"] = "\(String(format: "%.0f", round(currentDic["temp"] as? Double ?? 0.0)))\(UserDefaults.standard.bool(forKey: "isFahrenheit") ? "°F" : "°C")"
+                    
                     UserDefaults.standard.setValue(currentDic, forKey: "currentDic")
                     UserDefaults.standard.setValue(result["daily"] as! NSArray, forKey: "dailyArr")
                     UserDefaults.standard.setValue(result["hourly"] as! NSArray, forKey: "hourlyArr")
@@ -200,14 +198,14 @@ extension TodayWeatherTableViewController : CLLocationManagerDelegate {
                     
                     let weatherDic = (currentDic["weather"] as! NSArray)[0] as! [String:Any]
                     self.weatherStatus.text = weatherDic["description"] as? String
-                    self.temperature.text = "\(String(format: "%.0f", round(currentDic["temp"] as? Double ?? 0.0)))°C"
+                    self.temperature.text = currentDic["temp"] as? String ?? "ERROR"
                     self.weatherIcon.image = self.getWeatherIcon(weatherID: weatherDic["id"] as? Int ?? 800)
                     
                 }
             case .failure(let error):
                 print(error)
             }
-            self.dismiss(animated: true, completion: nil)
+            self.loadingIndicator.stopAnimating()
         }
     }
     
@@ -228,7 +226,7 @@ extension TodayWeatherTableViewController : UICollectionViewDelegate, UICollecti
             let hourlyDic = hourlyArr[indexPath.row] as! [String:Any]
             cell.time.text = Date(timeIntervalSince1970: hourlyDic["dt"] as! TimeInterval).toString(dateFormat: "HH:mm")
             cell.weatherIcon.image = getWeatherIcon(weatherID: (((hourlyDic["weather"] as! NSArray)[0]) as! [String:Any])["id"] as? Int ?? 800)
-            cell.temperature.text = "\(String(format: "%.0f", round(hourlyDic["temp"] as? Double ?? 0.0)))°C"
+            cell.temperature.text = "\(String(format: "%.0f", round(hourlyDic["temp"] as? Double ?? 0.0)))\(UserDefaults.standard.bool(forKey: "isFahrenheit") ? "°F" : "°C")"
             
             return cell
         } else {

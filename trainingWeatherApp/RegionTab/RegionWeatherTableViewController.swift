@@ -32,19 +32,18 @@ class RegionWeatherTableViewController: UITableViewController {
                 placeMarks?.forEach({ (placeMark) in
                     if let city = placeMark.locality ?? placeMark.name {
                         self.regionInfoArr[i]["regionName"] = city
-                        print(i," ",city)
                     } else {
                         self.regionInfoArr[i]["regionName"] = "Error"
                     }
                 })
             })
             
-            let URL = "https://api.openweathermap.org/data/2.5/weather?lat=\(lat)&lon=\(lon)&units=metric&appid=\("weatherAPI_Key".localized)"
+            let URL = "https://api.openweathermap.org/data/2.5/weather?lat=\(lat)&lon=\(lon)&units=\(UserDefaults.standard.bool(forKey: "isFahrenheit") ? "imperial" : "metric")&appid=\("weatherAPI_Key".localized)"
             AF.request(URL).responseJSON(completionHandler: { response in
                 switch response.result {
                 case .success:
                     if let result = try! response.result.get() as? [String:Any] {
-                        self.regionInfoArr[i]["temperature"] = "\(String(format: "%.0f", round((result["main"] as! [String:Any])["temp"] as! Double)))°C"
+                        self.regionInfoArr[i]["temperature"] = "\(String(format: "%.0f", round((result["main"] as! [String:Any])["temp"] as! Double)))\(UserDefaults.standard.bool(forKey: "isFahrenheit") ? "°F" : "°C")"
                     }
                 case .failure(let error):
                     print(error)
@@ -85,7 +84,6 @@ class RegionWeatherTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let vc = segue.destination as? PresentWeatherTableViewController else { return }
-        print("Segue!")
         
         let index = sender as! Int
         vc.regionLon = regionInfoArr[index]["regionLon"] as? Double
@@ -98,12 +96,12 @@ class RegionWeatherTableViewController: UITableViewController {
         
         let placeMark = noti.object as! MKPlacemark
         
-        let URL = "https://api.openweathermap.org/data/2.5/weather?lat=\(placeMark.coordinate.latitude)&lon=\(placeMark.coordinate.longitude)&units=metric&appid=\("weatherAPI_Key".localized)"
+        let URL = "https://api.openweathermap.org/data/2.5/weather?lat=\(placeMark.coordinate.latitude)&lon=\(placeMark.coordinate.longitude)&units=\(UserDefaults.standard.bool(forKey: "isFahrenheit") ? "imperial" : "metric")&appid=\("weatherAPI_Key".localized)"
         AF.request(URL).responseJSON(completionHandler: { response in
             switch response.result {
             case .success:
                 if let result = try! response.result.get() as? [String:Any] {
-                    let temperature = "\(String(format: "%.0f", round((result["main"] as! [String:Any])["temp"] as! Double)))°C"
+                    let temperature = "\(String(format: "%.0f", round((result["main"] as! [String:Any])["temp"] as! Double)))\(UserDefaults.standard.bool(forKey: "isFahrenheit") ? "°F" : "°C")"
                     let regionTemp : [String:Any] = ["regionName" : placeMark.locality ?? placeMark.name, "regionLat": Double(placeMark.coordinate.latitude), "regionLon": Double(placeMark.coordinate.longitude), "temperature":temperature]
                     self.regionInfoArr.append(regionTemp)
                     UserDefaults.standard.setValue(self.regionInfoArr, forKey: "regionInfos")
@@ -122,6 +120,6 @@ class RegionWeatherTableViewController: UITableViewController {
         regionSearchController.searchResultsUpdater = searchResultController
         
         self.navigationItem.searchController = regionSearchController
-        self.navigationItem.title = "지역별 날씨"
+        self.navigationItem.title = "region_tab_title".localized
     }
 }
