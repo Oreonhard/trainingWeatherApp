@@ -49,6 +49,7 @@
 		8DC3686B266FADC700A7A9D6 /* PresentWeatherTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentWeatherTableViewController.swift; sourceTree = "<group>"; };
 		8DC3686E267787D700A7A9D6 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		8DC368712677A3CA00A7A9D6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		8DC368732677B18800A7A9D6 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 		8DC8546F24FE9D6A003DC26A /* trainingWeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = trainingWeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DC8547224FE9D6A003DC26A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8DC8547424FE9D6A003DC26A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -337,6 +338,7 @@
 			children = (
 				8DC8547924FE9D6A003DC26A /* Base */,
 				8DC368712677A3CA00A7A9D6 /* en */,
+				8DC368732677B18800A7A9D6 /* ko */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
