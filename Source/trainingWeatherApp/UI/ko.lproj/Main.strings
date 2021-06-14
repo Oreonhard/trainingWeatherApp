@@ -1,0 +1,81 @@
+
+/* Class = "UILabel"; text = "강남구"; ObjectID = "098-gm-ZlY"; */
+"098-gm-ZlY.text" = "강남구";
+
+/* Class = "UILabel"; text = "20"; ObjectID = "2Rf-e4-Gb9"; */
+"2Rf-e4-Gb9.text" = "20";
+
+/* Class = "UINavigationItem"; title = "설정"; ObjectID = "2gW-uj-PoG"; */
+"2gW-uj-PoG.title" = "설정";
+
+/* Class = "UITabBarItem"; title = "오늘의 날씨"; ObjectID = "8eA-fq-ZZD"; */
+"8eA-fq-ZZD.title" = "오늘의 날씨";
+
+/* Class = "UILabel"; text = "1.0.0"; ObjectID = "9t5-xc-aNw"; */
+"9t5-xc-aNw.text" = "1.0.0";
+
+/* Class = "UILabel"; text = "Seoul"; ObjectID = "Hfj-zm-7Je"; */
+"Hfj-zm-7Je.text" = "Seoul";
+
+/* Class = "UITabBarItem"; title = "설정"; ObjectID = "Hiv-Af-yPl"; */
+"Hiv-Af-yPl.title" = "설정";
+
+/* Class = "UILabel"; text = "15"; ObjectID = "Lqd-bs-dxp"; */
+"Lqd-bs-dxp.text" = "15";
+
+/* Class = "UILabel"; text = "언어"; ObjectID = "N1g-Pc-XAj"; */
+"N1g-Pc-XAj.text" = "언어";
+
+/* Class = "UILabel"; text = "Seoul"; ObjectID = "PRm-1s-iz4"; */
+"PRm-1s-iz4.text" = "Seoul";
+
+/* Class = "UILabel"; text = "언어"; ObjectID = "Pex-f4-vEL"; */
+"Pex-f4-vEL.text" = "언어";
+
+/* Class = "UITabBarItem"; title = "오늘의 날씨"; ObjectID = "SUw-g3-x4a"; */
+"SUw-g3-x4a.title" = "오늘의 날씨";
+
+/* Class = "UITabBarItem"; title = "지역별 날씨"; ObjectID = "Ze1-4K-CbE"; */
+"Ze1-4K-CbE.title" = "지역별 날씨";
+
+/* Class = "UILabel"; text = "맑음"; ObjectID = "cHs-GC-L1j"; */
+"cHs-GC-L1j.text" = "맑음";
+
+/* Class = "UILabel"; text = "20"; ObjectID = "dMc-lc-EsJ"; */
+"dMc-lc-EsJ.text" = "20";
+
+/* Class = "UILabel"; text = "0°C"; ObjectID = "efi-lM-HZL"; */
+"efi-lM-HZL.text" = "0°C";
+
+/* Class = "UILabel"; text = "28°C"; ObjectID = "kRP-ja-gxi"; */
+"kRP-ja-gxi.text" = "28°C";
+
+/* Class = "UILabel"; text = "1"; ObjectID = "lEw-uj-2Nv"; */
+"lEw-uj-2Nv.text" = "1";
+
+/* Class = "UILabel"; text = "월요일"; ObjectID = "lk1-k0-ANH"; */
+"lk1-k0-ANH.text" = "월요일";
+
+/* Class = "UISegmentedControl"; nOz-TE-Gkv.segmentTitles[0] = "°C"; ObjectID = "nOz-TE-Gkv"; */
+"nOz-TE-Gkv.segmentTitles[0]" = "°C";
+
+/* Class = "UISegmentedControl"; nOz-TE-Gkv.segmentTitles[1] = "°F "; ObjectID = "nOz-TE-Gkv"; */
+"nOz-TE-Gkv.segmentTitles[1]" = "°F ";
+
+/* Class = "UILabel"; text = "맑음"; ObjectID = "qOm-JD-b2a"; */
+"qOm-JD-b2a.text" = "맑음";
+
+/* Class = "UILabel"; text = "표기 방식"; ObjectID = "tbE-Nk-zTJ"; */
+"tbE-Nk-zTJ.text" = "표기 방식";
+
+/* Class = "UILabel"; text = "앱 버전"; ObjectID = "uhN-oP-KiH"; */
+"uhN-oP-KiH.text" = "앱 버전";
+
+/* Class = "UITabBarItem"; title = "지역별 날씨"; ObjectID = "uhP-i9-HUq"; */
+"uhP-i9-HUq.title" = "지역별 날씨";
+
+/* Class = "UILabel"; text = "월요일"; ObjectID = "yKm-8n-qgP"; */
+"yKm-8n-qgP.text" = "월요일";
+
+/* Class = "UILabel"; text = "28°C"; ObjectID = "zpK-da-f6U"; */
+"zpK-da-f6U.text" = "28°C";
